@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КировГид | Твой гид по Кирову в формате видео</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=3022a95b-d1dc-4818-a8b1-ab34001dba77&lang=ru_RU" type="text/javascript"></script>
+</head>
+<body>
+
+    <header class="header" id="header">
+        <div class="container header__container">
+            <div class="logo">Киров<span class="text-accent">Гид</span></div>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li><a href="#hero" class="nav__link">Главная</a></li>
+                    <li><a href="#about" class="nav__link">О проекте</a></li>
+                    <li><a href="#map-section" class="nav__link">Карта</a></li>
+                    <li><a href="#search-section" class="nav__link">Поиск</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="hero">
+            <div class="hero__particles" id="particles"></div>
+            <div class="container hero__content fade-in">
+                <div class="hero__badge">📍 Кировская область</div>
+                <h1 class="hero__title">Твой гид по Кирову в <span class="text-accent">видео-формате</span></h1>
+                <p class="hero__subtitle">Надоело гулять по одним и тем же местам? Открой для себя лучшие локации города для встреч с друзьями через честные обзоры!</p>
+
+                <div class="hero__stats">
+                    <div class="stat">
+                        <span class="stat__num" data-target="11">0</span>
+                        <span class="stat__label">локаций</span>
+                    </div>
+                    <div class="stat__divider"></div>
+                    <div class="stat">
+                        <span class="stat__num" data-target="11">0</span>
+                        <span class="stat__label">видеообзоров</span>
+                    </div>
+                    <div class="stat__divider"></div>
+                    <div class="stat">
+                        <span class="stat__num" data-target="100">0</span>
+                        <span class="stat__label">% честно</span>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" id="btn-open-map">Открыть карту</button>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="container">
+                <h2 class="section-title fade-in">Как создавался <span class="text-accent">проект</span></h2>
+                <div class="cards-grid">
+                    <div class="card fade-in">
+                        <div class="card__icon">🎥</div>
+                        <h3 class="card__title">Съемка обзоров</h3>
+                        <p class="card__text">Мы лично посетили каждую локацию, чтобы снять честный видеообзор без прикрас. Только реальные эмоции и факты.</p>
+                    </div>
+                    <div class="card fade-in" style="transition-delay: 0.2s;">
+                        <div class="card__icon">💻</div>
+                        <h3 class="card__title">Разработка сайта</h3>
+                        <p class="card__text">Создание современного и быстрого интерфейса в стиле Hi-Tech, чтобы искать места для прогулок было удобно с любого устройства.</p>
+                    </div>
+                    <div class="card fade-in" style="transition-delay: 0.4s;">
+                        <div class="card__icon">✂️</div>
+                        <h3 class="card__title">Монтаж</h3>
+                        <p class="card__text">Динамичный монтаж роликов под современные тренды, чтобы смотреть обзоры было нескучно.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-section" id="map-section">
+            <div class="container">
+                <h2 class="section-title fade-in">Выбери свою <span class="text-accent">локацию</span></h2>
+
+                <!-- Фильтры -->
+                <div class="filters fade-in">
+                    <button class="filter-btn active" data-filter="all">🗺️ Все места</button>
+                    <button class="filter-btn" data-filter="park">🌿 Парки</button>
+                    <button class="filter-btn" data-filter="center">🏛️ Центр</button>
+                    <button class="filter-btn" data-filter="indoor">🏢 Крытые</button>
+                    <button class="filter-btn" data-filter="extreme">🏃 Активный отдых</button>
+                </div>
+            </div>
+
+            <div class="map-wrapper fade-in">
+                <div id="map" class="map-container"></div>
+            </div>
+        </section>
+        <section class="search-section" id="search-section">
+            <div class="container">
+                <h2 class="section-title fade-in">Поиск по <span class="text-accent">тегам</span></h2>
+                <p class="search-hint fade-in">Выбери один или несколько тегов — и мы покажем подходящие места</p>
+                <div class="tag-cloud fade-in" id="tag-cloud"></div>
+                <div class="search-results" id="search-results">
+                    <p class="search-placeholder">👆 Выбери тег выше, чтобы найти места</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__container">
+            <p>&copy; 2026 КировГид. Автор проекта: <span class="text-accent">Онучин Никита</span></p>
+        </div>
+    </footer>
+
+    <!-- Кнопка наверх -->
+    <button class="scroll-top" id="scroll-top" title="Наверх">↑</button>
+
+    <div class="modal-overlay" id="video-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-tags" id="modal-tags"></div>
+            <h3 class="modal-title" id="modal-title">Название места</h3>
+            <p class="modal-desc" id="modal-desc">Описание локации появится здесь...</p>
+            <div class="video-wrapper">
+                <video id="modal-video" width="100%" height="100%" controls controlsList="nodownload"></video>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
